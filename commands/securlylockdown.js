@@ -3,21 +3,36 @@ const Discord = module.require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
     try {
-			if(!message.member.hasPermission("ADMINISTRATOR")){
-  			return message.reply("You don't have permission to do that.");
-			}
-				message.guild.channels.cache.forEach(channel => { //Get each channel
-						if (channel.type === "text") { //Check if it's a text channel
-								try {
-									message.channel.updateOverwrite(message.channel.guild.roles.everyone, { VIEW_CHANNEL: true, SEND_MESSAGES: false });
-									message.channel.send('**LOCKDOWN ENABLED for ' + message.channel.name + '!!!!**')
-								} catch (error) { //Run this if there was an error setting the permissions
-										//Error handling code here
-								};
-						};
-				});
 
-    } catch(e) {
+    const channels = message.guild.channels.cache.filter(ch => ch.type !== 'category');
+    if (args[0] === 'on') {
+        channels.forEach(channel => {
+            channel.updateOverwrite(message.guild.roles.everyone, {
+                SEND_MESSAGES: false
+            })
+        })
+        
+        let lockEmbed = new Discord.MessageEmbed()
+            
+            .setThumbnail(`https://media.giphy.com/media/JozO6wdFcC81VPO6RS/giphy.gif`)
+            .setDescription(`**\n\nDone! Server Fully Locked! 🔒**`)
+            .setColor('#2F3136')
+        return message.channel.send(lockEmbed);
+
+    } else if (args[0] === 'off') {
+        channels.forEach(channel => {
+            channel.updateOverwrite(message.guild.roles.everyone, {
+                SEND_MESSAGES: true
+            })
+        })
+        
+        let lockEmbed2 = new Discord.MessageEmbed()
+            .setColor('#2F3136')    
+            .setThumbnail(`https://media.giphy.com/media/JozO6wdFcC81VPO6RS/giphy.gif`)
+            .setDescription(`**\n\nDone! Server Fully Unlocked! 🔓**`)
+        return message.channel.send(lockEmbed2)
+    }
+} catch(e) {
 
         console.log(e.stack);
 
