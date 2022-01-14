@@ -3,7 +3,7 @@ const Discord = module.require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
     try {
-			if(!message.member.hasPermission("ADMINISTRATOR")){
+			if(!message.member.hasPermission("MANAGE SERVER")){
   			return message.reply("You don't have permission to do that.");
 			}
 			const text = args.join(" ")
@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
 
-    name: "securlynotice",
+    name: "say",
     desc: "Yeet.",
     personalThoughts: "We all hate securly, so why not bring it to discord?"
 

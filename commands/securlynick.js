@@ -6,20 +6,19 @@ module.exports.run = async (bot, message, args) => {
 			if(!message.member.hasPermission("MANAGE SERVER")){
   			return message.reply("You don't have permission to do that.");
 			}
-			message.channel.updateOverwrite(message.channel.guild.roles.everyone, { VIEW_CHANNEL: true, SEND_MESSAGES: true });
-			message.channel.send("Successfully unlocked **this channel**") 
-
+			message.guild.me.setNickname('Securly');
+			message.delete()
     } catch(e) {
 
         console.log(e.stack);
-				message.reply("Internal Error\nUsage: !securlyunmute <username-of-person-muted>")
+
     }
 }
 
 module.exports.help = {
 
-    name: "unlock",
+    name: "nick",
     desc: "Yeet.",
-    personalThoughts: "AKA securly bypass"
+    personalThoughts: "We all hate securly, so why not bring it to discord?"
 
 }

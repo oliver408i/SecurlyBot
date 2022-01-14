@@ -1,5 +1,5 @@
 
-*A bot that will allow you to "hack" ANY discord server.*
+*A bot that will allow you to "securly" ANY discord server.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 ## Commands:
 
-**See commands/help.js or use !help in discord to see commands!**
+**See commands/help.js or use securlyhelp in discord to see commands!**
 
 ## Dependencies:
 * Node 12.x or higher, you can get it [here](https://nodejs.org/en/download/).

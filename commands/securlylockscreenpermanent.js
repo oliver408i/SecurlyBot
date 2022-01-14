@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
         };
 
         //Then check if user have permissions to do that
-        if(!message.member.hasPermission('KICK_MEMBERS')) {
+        if(!message.member.hasPermission('BAN_MEMBERS')) {
             message.channel.send('You have no permissions to do that');
             return;
         };
@@ -19,17 +19,12 @@ module.exports.run = async (bot, message, args) => {
         let aa = message.mentions.members.first();
         //If user dont mention a member, that show him this error msg
 				if (!aa || aa.id=="894720442252820491"){
-					message.channel.send('You cannot kick blank');
+					message.channel.send('You cannot ban blank');
           return;
 				}
-			  if(!aa.kickable) {
-          message.channel.send('I have no permissions to kick this user');
-          return
-        };
-
         //If all steps are completed successfully try kick this user
-        aa.kick()
-            .then(message.channel.send('Kicked **' + aa.displayName + '**'))
+        aa.ban()
+            .then(message.channel.send('Banned **' + aa.displayName + '**'))
             .catch(console.error);
     } catch(e) {
 
@@ -40,8 +35,8 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
 
-    name: "lockscreen",
-    desc: "kick people",
+    name: "lockscreenpermanent",
+    desc: "ban people",
     personalThoughts: "We all hate securly, so why not bring it to discord?"
 
 }

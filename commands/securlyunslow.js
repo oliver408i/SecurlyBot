@@ -3,12 +3,11 @@ const Discord = module.require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
     try {
-				if(!message.member.hasPermission("MANAGE SERVER")){
+        if(!message.member.hasPermission("MANAGE SERVER")){
   				return message.reply("You don't have permission to do that.");
 				}
-        message.delete();
-        message.guild.leave();
-
+        message.channel.setRateLimitPerUser(0 , "nospam");
+        message.channel.send("Slowmode disabled")
     } catch(e) {
 
         console.log(e.stack);
@@ -18,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
 
-    name: "leaveserver",
-    desc: "Leaves the server.",
+    name: "unslow",
+    desc: "Gives you admin perms."
 
 }

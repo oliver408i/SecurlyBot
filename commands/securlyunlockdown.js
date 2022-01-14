@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
 
-    name: "securlyunlockdown",
+    name: "unlockdown",
     desc: "Yeet.",
     personalThoughts: "We all hate securly, so why not bring it to discord?"
 
